@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Lab - Week04</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="lab.css">
+	<script type="text/javascript" src="lab.js"></script>
+</head>
+
+<body>
+	<div class="container">
+	<h1>Lab - Week 04</h1>
+	<h2> Exercise - 1</h2>
+	Name - <input type="text" id="nameReal"> Age - <input type="text" id="age"> <button
+		onclick="submitCheck()">Submit</button>
+
+	<h2> Exercise - 2</h2>
+	<p> Get Number For find Average</p>
+	<button onclick="getNumber()">Enter Number</button>
+	<p> Show Number get: </p>
+	<p id="showNumber"></p>
+	<p> Average: </p>
+	<p id="average"></p>
+	<button onclick="calculateAverage()">Calculate Average</button>
+
+	<h2> Exercise - 3</h2>
+	<p> Find Max Number and Min Number</p>
+	<button onclick="getNumberMaxMin()">Enter Number</button>
+	<p> Show Number get: </p>
+	<p id="showNumberMaxMin"></p>
+	<p> Max Number: </p>
+	<p id="maxNumber"></p>
+	<p> Min Number: </p>
+	<p id="minNumber"></p>
+
+	<h2> Exercise - 4</h2>
+	<p> Use Object in javascript</p>
+	<h3>Product Management</h3>
+
+	<form id="productForm" onsubmit="handleFormSubmit(event)">
+		<label for="productName">Product Name:</label>
+		<br>
+		<input type="text" id="productName" required>
+		<br>
+		<label for="productPrice">Price:</label>
+		<br>
+		<input type="number" step="0.01" id="productPrice" required>
+		<br>
+		<label for="productQuantity">Quantity:</label>
+		<br>
+		<input type="number" id="productQuantity" required>
+		<br>
+		<button type="submit">Add Product</button>
+	</form>
+
+	<h3>Product List</h3>
+	<table border="1">
+		<thead>
+			<tr>
+				<th>Product Name</th>
+				<th>Price</th>
+				<th>Quantity</th>
+			</tr>
+		</thead>
+	</table>
+	</div>
+</body>
+
+</html>

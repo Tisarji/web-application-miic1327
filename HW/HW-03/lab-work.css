@@ -1,0 +1,139 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+
+body {
+	margin: 0;
+	padding: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	background: linear-gradient(to right, #52a3ba, #b34ccd);
+	font-family: "Nunito", sans-serif;
+	position: relative;
+	overflow: hidden;
+}
+
+body::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: url(./bg-01.jpg) no-repeat center center;
+	background-size: cover;
+	opacity: 0.3;
+	z-index: -1;
+}
+
+.container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+}
+
+.login-card {
+	background: white;
+	padding: 40px;
+	border-radius: 10px;
+	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+	text-align: center;
+	width: 300px;
+	height: 60%;
+}
+
+.login-card h2 {
+	margin-bottom: 20px;
+	color: #5D3FD3;
+}
+
+.input-group {
+	margin-bottom: 20px;
+}
+
+.input-group input {
+	width: 100%;
+	height: 30px;
+	padding: 10px;
+	border: 1px solid #ccc;
+	border-radius: 15px;
+	outline: none;
+	font-weight: bold;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.btn {
+	background: #b53fd3;
+	color: white;
+	border: none;
+	padding: 15px;
+	border-radius: 20px;
+	cursor: pointer;
+	width: 60%;
+	box-shadow: 0 4px 6px rgba(201, 69, 231, 0.5);
+	margin-bottom: 60px;
+}
+
+.btn:hover {
+	background: #4B2EB3;
+}
+
+.login-options {
+	margin: 20px 0;
+}
+
+.login-options p {
+	color: #ccc;
+	margin-bottom: 20px;
+}
+
+.social-login {
+	display: flex;
+	justify-content: center;
+	gap: 20px;
+}
+
+.social-icon {
+	background: white;
+	border: 2px solid #ddd;
+	border-radius: 50%;
+	padding: 10px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.social-icon img {
+	width: 24px;
+	height: 24px;
+}
+
+.signup-link {
+	color: #5D3FD3;
+	cursor: pointer;
+	margin-top: 80px;
+}
+
+.signup-link:hover {
+	text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+	.login-card {
+		width: 90%;
+		padding: 20px;
+	}
+
+	.input-group input {
+		width: 100%;
+	}
+
+	.btn {
+		width: 100%;
+	}
+
+	.signup-link {
+		margin-top: 20px;
+	}
+}

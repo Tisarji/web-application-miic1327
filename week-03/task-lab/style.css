@@ -1,0 +1,41 @@
+body {
+	background-color: #233645;
+	background-image: url(meme3.png), url(meme4.png);
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-position: bottom left, bottom right;
+	background-size: 50%, 60%;
+	font-size: 26px;
+}
+
+.box {
+	margin-top: 100%;
+	text-align: center;
+	color: rgb(202, 197, 255);
+	width: 350px;
+	height: 350px;
+	margin: 0 auto;
+	border: 2px solid #376051;
+	border-radius: 10%;
+	background-color: #29463c;
+	background-image: url(meme1.png);
+	background-size: cover;
+}
+
+.container {
+	display: flex;
+	justify-content: center;
+	border: 1px solid #376051;
+}
+
+.item {
+	background-color: rgba(110, 142, 139, 0.581);
+	border-radius: 30%;
+	margin: 30px;
+	padding: 30px
+}
+
+.item:hover {
+	background-color: rgba(110, 142, 139, 0.781);
+	cursor: pointer;
+}

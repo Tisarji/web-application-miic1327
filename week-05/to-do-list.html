@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>My To-Do List</title>
+    <style>
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: #e9ecef;
+        margin: 0;
+        padding: 20px;
+      }
+
+      h1 {
+        color: #495057;
+        margin-bottom: 30px;
+        font-size: 2rem;
+      }
+
+      .container {
+        width: 100%;
+        max-width: 600px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        margin-bottom: 20px;
+      }
+
+      .item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+        border-bottom: 1px solid #dee2e6;
+        transition: background-color 0.3s;
+      }
+
+      .item:last-child {
+        border-bottom: none;
+      }
+
+      .item:hover {
+        background-color: #f8f9fa;
+      }
+
+      .item-text {
+        flex: 1;
+        color: #212529;
+        font-size: 1rem;
+      }
+
+      .delete-btn {
+        background-color: #ff7300;
+        color: #fff;
+        border: none;
+        padding: 5px 15px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+
+      .delete-btn:hover {
+        background-color: #ff0000;
+      }
+
+      .input-group {
+        display: flex;
+        gap: 15px;
+        margin-bottom: 20px;
+      }
+
+      #data {
+        flex: 1;
+        padding: 10px;
+        border: 1px solid #ced4da;
+        border-radius: 5px;
+        font-size: 1rem;
+      }
+
+      #change-text,
+      .delete-all-btn {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 1rem;
+        color: #fff;
+        transition: background-color 0.3s;
+      }
+
+      #change-text {
+        background-color: #477b9b;
+      }
+
+      #change-text:hover {
+        background-color: #000000;
+      }
+
+      .delete-all-btn {
+        background-color: #fc3f3f;
+      }
+
+      .delete-all-btn:hover {
+        background-color: #ff5d5d;
+      }
+    </style>
+    <script>
+      function run() {
+        const show = document.getElementById("show");
+        const div = document.createElement("div");
+        div.className = "item";
+        let txt = document.getElementById("data").value.trim();
+        if (txt === "") {
+          alert("Please enter some text");
+          return;
+        }
+        const text = document.createElement("span");
+        text.className = "item-text";
+        text.textContent = txt;
+        const deleteButton = document.createElement("button");
+        deleteButton.className = "delete-btn";
+        deleteButton.textContent = "Delete";
+        deleteButton.onclick = function () {
+          show.removeChild(div);
+        };
+        div.appendChild(text);
+        div.appendChild(deleteButton);
+        show.appendChild(div);
+        document.getElementById("data").value = "";
+      }
+
+      function deleteAll() {
+        const show = document.getElementById("show");
+        show.innerHTML = "";
+      }
+    </script>
+  </head>
+
+  <body>
+    <h1>"To-Do List"</h1>
+    <div class="container">
+      <div class="input-group">
+        <input id="data" type="text" placeholder="Enter Text!" />
+        <button id="change-text" onclick="run()">Add</button>
+        <button class="delete-all-btn" onclick="deleteAll()">Delete All</button>
+      </div>
+      <div id="show"></div>
+    </div>
+  </body>
+</html>

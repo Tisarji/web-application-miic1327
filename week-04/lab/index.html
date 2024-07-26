@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>External JavaScript Example</title>
+	<script src="script.js"></script>
+	<script>
+		function show(){
+			alert("Hello From HTML File");
+		}
+	</script>
+</head>
+
+<body>
+	<h1>External JavaScript Example</h1>
+	<script>
+		const color = ["white", "black"];
+		//let numberColor = prompt("Get Number: ");
+
+		let rows = prompt("Get Rows: ");
+		let cols = prompt("Get Cols: ");
+		document.write(`<table border="1">`);	
+			for (let i = 0; i < rows; i++) {
+				document.write(`<tr><div></div></tr>`);
+				for (let j = 0; j < cols; j++) {
+					document.write(`<td><div style="background-color:${color[(i + j) % 2]}"> Hello World! </div></td>`);
+				}
+			}
+		document.write(`</table>`);
+
+		</script>
+	<p>Click the button to display a message.</p>
+	<button onclick="displayMessage()">Click JS File</button>
+	<button onclick="show()">Click HTML File</button>
+	<p id="message"></p>
+</body>
+
+</html>

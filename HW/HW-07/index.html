@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Canvas</title>
+    <style>
+        #mycanvas {
+            width: 300px;
+            height: 300px;
+        }
+    </style>
+    <script>
+        const img = new Image();
+        img.src = 'https://private-user-images.githubusercontent.com/48820052/346264963-941b3a48-73ed-4ea2-888c-b50c7dbdc379.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MjQyNDg4MDUsIm5iZiI6MTcyNDI0ODUwNSwicGF0aCI6Ii80ODgyMDA1Mi8zNDYyNjQ5NjMtOTQxYjNhNDgtNzNlZC00ZWEyLTg4OGMtYjUwYzdkYmRjMzc5LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNDA4MjElMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjQwODIxVDEzNTUwNVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWQ4N2E5Mjk1NjkxZDQyMWVkZmJiZGNmMGZkOTMwYjBjMGJiNDQ1N2Q5ZThiMjBiM2IwNmM4MWYyZDA3ZmMwZjkmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JmFjdG9yX2lkPTAma2V5X2lkPTAmcmVwb19pZD0wIn0.avPBpCDZM-EcUsFO6IyUDRx2ppV3KNPiRWNDRngzEVA';
+
+        function calc(r, d) {
+            let y = r * Math.sin(d * Math.PI / 180);
+            let x = r * Math.cos(d * Math.PI / 180);
+            return { x: x, y: y };
+        }
+
+        function drawcanvas() {
+            const canvas = document.getElementById('mycanvas');
+            const ctx = canvas.getContext('2d');
+            ctx.clearRect(0, 0, 300, 300);
+
+            // Draw the image onto the canvas
+            ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+            ctx.beginPath();
+            let cx = canvas.width / 2;
+            let cy = canvas.height / 2;
+            let minSize = canvas.width > canvas.height ? canvas.height : canvas.width;
+            ctx.strokeStyle = 'red';
+            ctx.lineWidth = 1;
+            ctx.arc(cx, cy, (minSize / 2) * 0.9, 0, 2 * Math.PI);
+            ctx.stroke();
+
+            for (let i = 0; i < 12; i++) {
+                let point = calc((minSize / 2) * 0.85, (i * 30) - 90);
+                let point2 = calc((minSize / 2) * 0.75, (i * 30) - 90);
+                ctx.beginPath();
+                ctx.moveTo(point.x + cx, point.y + cy);
+                ctx.lineTo(point2.x + cx, point2.y + cy);
+                ctx.stroke();
+
+                let point3 = calc((minSize / 2) * 0.68, (i * 30) - 90);
+                ctx.font = '20px Tahoma';
+                let st = ctx.measureText((i + 1));
+                ctx.fillText((i + 1), (point3.x + cx) - (st.width / 2), point3.y + cy + 10);
+            }
+
+            let now = new Date();
+            let h = now.getHours();
+            let m = now.getMinutes();
+            let s = now.getSeconds();
+
+            let pointH = calc((minSize / 2) * 0.5, (h * 30) + (m * 0.5) + (s * 0.0083) - 90);
+            ctx.beginPath();
+            ctx.lineWidth = 8;
+            ctx.moveTo(cx, cy);
+            ctx.lineTo(pointH.x + cx, pointH.y + cy);
+            ctx.stroke();
+
+            let pointM = calc((minSize / 2) * 0.68, (m * 6) + (s * 0.1) - 90);
+            ctx.beginPath();
+            ctx.lineWidth = 3;
+            ctx.strokeStyle = 'blue';
+            ctx.moveTo(cx, cy);
+            ctx.lineTo(pointM.x + cx, pointM.y + cy);
+            ctx.stroke();
+
+            let pointS = calc((minSize / 2) * 0.68, (s * 6) - 90);
+            ctx.beginPath();
+            ctx.lineWidth = 1;
+            ctx.strokeStyle = 'green';
+            ctx.moveTo(cx, cy);
+            ctx.lineTo(pointS.x + cx, pointS.y + cy);
+            ctx.stroke();
+        }
+
+        // Draw the canvas when the image is fully loaded
+        img.onload = function() {
+            setInterval(drawcanvas, 1000);
+        };
+    </script>
+</head>
+
+<body>
+    <canvas id="mycanvas" width="300" height="300"></canvas>
+</body>
+
+</html>
